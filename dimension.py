@@ -1,5 +1,4 @@
 dimension = []
-WS = []
 import pandas as pd
 count = int(input('column numbers:'))
 while True:
