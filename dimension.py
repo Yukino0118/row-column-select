@@ -3,15 +3,20 @@ import pandas as pd
 while True:
     A = list()
     B = list()
-    Width,Space = map(eval,input('Input dimension:').split('/'))
-    D = [Width,Space]
-    if Width == 0 and Space == 0:
-        break
-    df = pd.read_excel('dimension.xlsx', header = 2 ,index_col = 0)
-    A = (df.loc[Width,Space].values.tolist())
-    C = D + A 
-    dimension.append(C)
-    D = list()
+    try:
+        Width,Space = map(eval,input('Input dimension, input 0/0 quit:').split('/'))
+        D = [Width,Space]
+        if Width == 0 and Space == 0:
+            break
+        df = pd.read_excel('dimension.xlsx', header = 2 ,index_col = 0)
+        A = (df.loc[Width,Space].values.tolist())
+        C = D + A 
+        dimension.append(C)
+        D = list()
+    except:
+        print('type error')
+    else:
+        continue
 with open('new.csv', 'w') as f:
     f.write('Width,Space,TCD,BCD,THK,SB,BB'+'\n')
     for d in dimension:
